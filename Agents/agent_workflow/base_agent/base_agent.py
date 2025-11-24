@@ -2,25 +2,22 @@ from autogen_agentchat.agents import AssistantAgent
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
 api_key=os.getenv('OPENAI_API_KEY')
 
 
-class BaseAssistantAgent:
-    def __init__(self,name,system_message,**kwargs):
-        self.name=name
-        self.system_message=system_message
-        self.kwargs=kwargs
+class BaseAgent:
+    def __init__(self):
+        self.model_client=BaseAgent.create_model_client()
   
-    def create_assistant_agent(self)->AssistantAgent:
+    def create_assistant_agent(self,name,system_message,**kwargs)->AssistantAgent:
         return AssistantAgent(
-            name=self.name,
-            system_message=self.system_message,
-            model_client=self.create_model_client(),
-            **self.kwargs)
-    
-    def create_model_client(self):
+            name=name,
+            system_message=system_message,
+            model_client=self.model_client,
+            **kwargs)
+    @classmethod
+    def create_model_client(cls):
         model_client = OpenAIChatCompletionClient(
             base_url='https://openrouter.ai/api/v1',
             model='nvidia/nemotron-nano-12b-v2-vl:free',

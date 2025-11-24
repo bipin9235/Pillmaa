@@ -4,3 +4,5 @@ autogen-ext[ollama]
 autogen-core
 pydantic
 dotenv
+sqlite-utils
+pandas
