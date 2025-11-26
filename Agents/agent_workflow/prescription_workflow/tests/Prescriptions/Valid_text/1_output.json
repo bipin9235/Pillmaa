@@ -1,0 +1,34 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Paracetamol",
+            "dose": "1 tablet",
+            "duration": "5 days",
+            "drug_dosage_frequency": {
+                "frequency_type": "every 6 hours",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            }
+        },
+        {
+            "drug_name": "Cetirizine",
+            "dose": "1 tablet",
+            "duration": "7 days",
+            "drug_dosage_frequency": {
+                "frequency_type": "Not Mentioned",
+                "time_of_day": "night",
+                "condition": "Not Mentioned"
+            }
+        },
+        {
+            "drug_name": "Azithromycin",
+            "dose": "1 tablet",
+            "duration": "3 days",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            }
+        }
+    ]
+}

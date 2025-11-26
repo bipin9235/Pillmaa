@@ -1,0 +1,34 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Amlodipine 5 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "morning",
+                "condition": "Not Mentioned"
+            }
+        },
+        {
+            "drug_name": "Losartan 50 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "night",
+                "condition": "Not Mentioned"
+            }
+        },
+        {
+            "drug_name": "Aspirin 75 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "after lunch"
+            }
+        }
+    ]
+}

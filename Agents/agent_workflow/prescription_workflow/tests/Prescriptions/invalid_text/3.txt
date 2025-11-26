@@ -1,0 +1,6 @@
+Patient Name: Rajesh Kumar
+Date: 25-Nov-2025
+Diagnosis: Hypertension
+Medicines:
+1. Amlodipine — (Strength missing, no dosage/frequency)
+2. — (Completely blank entry)

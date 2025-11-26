@@ -1,0 +1,34 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Pantoprazole 40 mg",
+            "dose": "1 tablet",
+            "duration": "14 days",
+            "drug_dosage_frequency": {
+                "frequency_type": "Not Mentioned",
+                "time_of_day": "Not Mentioned",
+                "condition": "before breakfast"
+            }
+        },
+        {
+            "drug_name": "Sucralfate 1 g",
+            "dose": "1 tablet",
+            "duration": "10 days",
+            "drug_dosage_frequency": {
+                "frequency_type": "thrice daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "before meals"
+            }
+        },
+        {
+            "drug_name": "Ondansetron 4 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "as needed",
+                "time_of_day": "Not Mentioned",
+                "condition": "nausea"
+            }
+        }
+    ]
+}

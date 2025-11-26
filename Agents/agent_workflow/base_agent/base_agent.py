@@ -1,5 +1,6 @@
 from autogen_agentchat.agents import AssistantAgent
 from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_ext.models.ollama import OllamaChatCompletionClient
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -24,6 +25,13 @@ class BaseAgent:
             api_key=api_key,
             model_info={"family": "nvidia", "name": "nemotron-nano-12b-v2-vl", "provider": "OpenRouter","vision":True,"function_calling":True,"json_output":True,"structured_output":True})
         return model_client
+    # @classmethod
+    # def create_model_client(cls):
+    #     model_client = OllamaChatCompletionClient(
+    #         base_url="http://127.0.0.1:11434",
+    #         model='qwen3-4b',
+    #         model_info={"family": "qwen", "name": "qwen3-4b", "provider": "OpenRouter","vision":True,"function_calling":True,"json_output":True,"structured_output":True})
+    #     return model_client
 
 
 # other_parms={"reflect_on_tool_use":True}

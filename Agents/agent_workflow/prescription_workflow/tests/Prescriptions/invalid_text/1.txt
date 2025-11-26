@@ -1,0 +1,5 @@
+Patient Name: John Doe
+Date: 25-Nov-2025
+Diagnosis: Acute Upper Respiratory Infection
+Medicines:
+[No medicines listed]

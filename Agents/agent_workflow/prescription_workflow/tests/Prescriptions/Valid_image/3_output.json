@@ -1,0 +1,13 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Ibuprofen",
+            "drug_dosage_frequency": {
+                "frequency_type": "every 6 hours",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            },
+            "drug_category": "Not Mentioned"
+        }
+    ]
+}

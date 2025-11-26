@@ -1,0 +1,6 @@
+Patient Name: Emily Brown
+Date: 25-Nov-2025
+Diagnosis: Gastritis
+Medicines:
+Instructions: Take as advised by doctor
+(No medicine names provided)

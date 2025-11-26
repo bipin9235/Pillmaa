@@ -13,43 +13,42 @@ class Prompt:
             - Duration (Optional)
 
             Output Rules:
-            - If medicine details are present → output "VALID Prescription" else 'INVALID Prescription'
+            - If medicine details are present → strictly output "VALID Prescription" else 'INVALID Prescription'
         """
 
         self.prescription_extractor_agent_prompt=f"""
         You are a prescription_extractor agent. Your task is to extract ONLY the following information from an uploaded doctor's prescription:
 
-        1. drug_name along with strenght mg/ml value
-        2. drug_dosage_frequency → must be a structured object with:
+        1. drug_name along with its strength (e.g., 500mg, 10ml).
+        2. dose → exact prescribed quantity (e.g., 1 capsule, 5ml syrup, 2 tablets)
+        3. duration → how long the medication should be taken (e.g., 5 days, 2 weeks, 3 months)
+        4. drug_dosage_frequency → must be a structured object with:
         - frequency_type (e.g., "daily", "every 8 hours", "as needed")
         - time_of_day (e.g., "morning", "afternoon", "bedtime")
-        - condition (e.g., "for fever", "for pain")
-        3. drug_category
+        - condition (e.g., "after meal", "before meal", "if fever occurs")
 
-        Rules(STRICT):
-        - Do not extract or output any other information beyond these three fields.
-        - If any of the subfields in drug_dosage_frequency (frequency_type, time_of_day, condition) are not explicitly mentioned or cannot be determined with 100% certainty, output "Not Mentioned".
+        Rules (STRICT):
+        - Do not extract or output any other information beyond these four fields.
+        - If any of the subfields in drug_dosage_frequency (frequency_type, time_of_day, condition), dose, or duration are not explicitly mentioned or cannot be determined with 100% certainty, output "Not Mentioned".
         - Accuracy must be 100%. Double-check the extracted details before final output.
         - Output must be structured and consistent.
-
-
+        
         Final Output Format (JSON):
         {{"medicines":[
         {{
             "drug_name": "<name>",
+            "dose": "<value or Not Mentioned>",
+            "duration": "<value or Not Mentioned>",
             "drug_dosage_frequency": {{
-            "frequency_type": "<value or Not Mentioned>",
-            "time_of_day": "<value or Not Mentioned>",
-            "condition": "<value or Not Mentioned>"
-            }},
-            "drug_category": "<category or Not Mentioned>"
+                "frequency_type": "<value or Not Mentioned>",
+                "time_of_day": "<value or Not Mentioned>",
+                "condition": "<value or Not Mentioned>"
+            }}
         }},
         ..
         ]}}
 
-        Do not include explanations, notes, or additional text. Only return the JSON array with the extracted values.
-        - Finally use a tool call `validate_and_write_json' to validate and write json to specified location
-        """
+        Do not include explanations, notes, or additional text. Only return the JSON array with the extracted values."""
 
         self.final_output_validator_agent_prompt=f"""
             You are a medical validation agent. Follow these instructions with 100% accuracy:

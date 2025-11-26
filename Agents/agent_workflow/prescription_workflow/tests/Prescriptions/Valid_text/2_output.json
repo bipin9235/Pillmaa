@@ -1,0 +1,34 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Metformin 500 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "twice daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "after meals"
+            }
+        },
+        {
+            "drug_name": "Glimepiride 2 mg",
+            "dose": "1 tablet",
+            "duration": "Not Mentioned",
+            "drug_dosage_frequency": {
+                "frequency_type": "once daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "before breakfast"
+            }
+        },
+        {
+            "drug_name": "Vitamin D3 60,000 IU",
+            "dose": "1 capsule",
+            "duration": "8 weeks",
+            "drug_dosage_frequency": {
+                "frequency_type": "weekly",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            }
+        }
+    ]
+}
