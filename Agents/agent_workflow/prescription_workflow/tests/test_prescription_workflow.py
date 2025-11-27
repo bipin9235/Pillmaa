@@ -10,7 +10,7 @@ from io import BytesIO
 #invalid_input_path=f'/workspaces/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/invalid_text/{i}'
 #valid_images=f'/workspaces/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/Valid_image/{i}'
 
-for i in range(1,6):
+for i in range(2,3):
     path=f'/workspaces/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/Valid_text/{i}'
     with open(file=path+'.txt',mode='r') as file:
         content=file.read()

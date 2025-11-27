@@ -13,76 +13,48 @@ class Prompt:
             - Duration (Optional)
 
             Output Rules:
-            - If medicine details are present → strictly output "VALID Prescription" else 'INVALID Prescription'
+            - If medicine details are present → strictly return ONLY string "VALID Prescription".
+            - If medicine details are not present-> return string "INVALID Prescription" along with details.
         """
-
         self.prescription_extractor_agent_prompt=f"""
-        You are a prescription_extractor agent. Your task is to extract ONLY the following information from an uploaded doctor's prescription:
+        Extract the following prescription into valid JSON matching this Pydantic model:
 
-        1. drug_name along with its strength (e.g., 500mg, 10ml).
-        2. dose → exact prescribed quantity (e.g., 1 capsule, 5ml syrup, 2 tablets)
-        3. duration → how long the medication should be taken (e.g., 5 days, 2 weeks, 3 months)
-        4. drug_dosage_frequency → must be a structured object with:
-        - frequency_type (e.g., "daily", "every 8 hours", "as needed")
-        - time_of_day (e.g., "morning", "afternoon", "bedtime")
-        - condition (e.g., "after meal", "before meal", "if fever occurs")
+        Prescription → medicines[List[Medicine]]
+        Medicine fields:
+        - medicine_full_name (exact name + strength)
+        - medicine_form (tablet, capsule, syrup, injection)
+        - intake_quantity (units per intake)
+        - intake_unit (tablet, capsule, ml, drops)
+        - course_lenght_days (total course length in days)
+        - intake_schedule: dose_frequency_hours, dose_frequency, administration_notes
+        - prescribed_by ("Not Mentioned" if missing)
+        - notes (clarifications if useful)
 
-        Rules (STRICT):
-        - Do not extract or output any other information beyond these four fields.
-        - If any of the subfields in drug_dosage_frequency (frequency_type, time_of_day, condition), dose, or duration are not explicitly mentioned or cannot be determined with 100% certainty, output "Not Mentioned".
-        - Accuracy must be 100%. Double-check the extracted details before final output.
-        - Output must be structured and consistent.
-        
-        Final Output Format (JSON):
-        {{"medicines":[
-        {{
-            "drug_name": "<name>",
-            "dose": "<value or Not Mentioned>",
-            "duration": "<value or Not Mentioned>",
-            "drug_dosage_frequency": {{
-                "frequency_type": "<value or Not Mentioned>",
-                "time_of_day": "<value or Not Mentioned>",
-                "condition": "<value or Not Mentioned>"
-            }}
-        }},
-        ..
-        ]}}
-
-        Do not include explanations, notes, or additional text. Only return the JSON array with the extracted values."""
-
-        self.final_output_validator_agent_prompt=f"""
-            You are a medical validation agent. Follow these instructions with 100% accuracy:
-
-            1. Input:
-            - "User" provided prescription medicines list.
-            - Output from prescription_extractor_agent containing extracted medicine/drug_names.
-
-            2. Task 1: Validation
-            - Compare the "User" input prescription medicines with the output from prescription_extractor_agent.
-            - If both lists match exactly (same medicines, same spelling, same count):
-                → Output: "Output MATCHES from prescription_extractor_agent DONE"
-            - Else:
-                → Output: "Output MISMATCHES from prescription_extractor_agent"
-            - If invalid, STOP and do not proceed further.
-
-            3. Task 2: Database Check:
-            - Call tool: ```fetch_drug()``` (no arguments).
-            - Compare the prescription_extractor_agent medicine/drug_names with the list returned by fetch_drug.
-            - Create two lists:
-                a) Present_in_DB: All medicines that exist in fetch_drug output.
-                b) Not_in_DB: All medicines that do not exist in fetch_drug output.
-            - Output both lists clearly.
-
-            4. Rules:
-            - Always perform exact string match for validation.
-            - Do not skip or approximate comparisons.
-            - Ensure deterministic behavior: either "MATCHES DONE" or "MISMATCHES" for Task 1.
-            - For Task 2, ensure every medicine is categorized into exactly one of the two lists.
-
-            Final Output Format:
-            - Task 1 Result: 'MATCHES DONE' or 'MISMATCHES' statement.
-            - Task 2 Result:
-                - Present_in_DB: [list of medicines]
-                - Not_in_DB: [list of medicines]
-            - Return ```DONE``` only when MATCHES found
+        Rules:
+        - Use exact text for drug names.
+        - dose_amount = per intake, not per day.
+        - interval_hours = spacing in hours, interval_days = spacing in days.
+        - Weekly = 7 days, 8 weeks = 56 days.
+        - Output must be valid JSON only.
         """
+        
+        self.final_output_validator_agent_prompt=f"""
+    You are a validator agent. Compare generated JSON with the original prescription text.
+
+    Rules:
+    - Check all fields in Prescription model.
+    - medicine_full_name must include name + strength (e.g., "Metformin 500 mg").
+    - medicine_form must be one of: tablet, capsule, syrup, injection.
+    - intake_unit (dose_unit) must be one of: tablet, capsule, ml, drops.
+    - intake_quantity = units per intake, not per day.value should be >=1 and <=50
+    - course_lenght_days must equal full course length (e.g., 8 weeks = 56 days). It's value should be >=1
+    - intake_schedule.intervadose_frequency_hours = hours between doses (e.g., twice daily = 12).
+    - intake_schedule.dose_frequency = ('Daily','Weekly','Monthly').
+    - intake_schedule.administration_notes must match text fully (e.g., "weekly for 8 weeks", not just "weekly").
+    - prescribed_by = "Not Mentioned" if missing.
+    - notes = clarifications only.
+
+    Output:
+    - If all correct → return ONLY {{"validation":"pass"}}
+    - Else → {{"issues":[{{field, correction, reason}}]}}
+    """
