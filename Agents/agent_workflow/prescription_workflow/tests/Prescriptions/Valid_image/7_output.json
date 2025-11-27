@@ -1,0 +1,13 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Clindamycin 300mg Cap (Dalacin C Hex)",
+            "drug_dosage_frequency": {
+                "frequency_type": "every 12 hours",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            },
+            "drug_category": "antibiotic"
+        }
+    ]
+}

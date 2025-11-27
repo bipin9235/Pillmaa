@@ -1,0 +1,8 @@
+autogen-agentchat
+autogen-ext[openai]
+autogen-ext[ollama]
+autogen-core
+pydantic
+dotenv
+sqlite-utils
+pandas

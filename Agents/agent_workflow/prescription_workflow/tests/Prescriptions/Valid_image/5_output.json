@@ -1,0 +1,31 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Amlodipine",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "morning",
+                "condition": "Not Mentioned"
+            },
+            "drug_category": "Not Mentioned"
+        },
+        {
+            "drug_name": "Losartan",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "night",
+                "condition": "Not Mentioned"
+            },
+            "drug_category": "Not Mentioned"
+        },
+        {
+            "drug_name": "Aspirin",
+            "drug_dosage_frequency": {
+                "frequency_type": "daily",
+                "time_of_day": "Not Mentioned",
+                "condition": "Not Mentioned"
+            },
+            "drug_category": "Not Mentioned"
+        }
+    ]
+}

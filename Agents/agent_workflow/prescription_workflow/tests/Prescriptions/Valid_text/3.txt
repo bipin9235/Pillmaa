@@ -1,0 +1,7 @@
+Patient Name: Rajesh Kumar
+Date: 25-Nov-2025
+Diagnosis: Hypertension
+Medicines:
+1. Amlodipine 5 mg – 1 tablet daily in the morning
+2. Losartan 50 mg – 1 tablet daily at night
+3. Aspirin 75 mg – 1 tablet daily after lunch

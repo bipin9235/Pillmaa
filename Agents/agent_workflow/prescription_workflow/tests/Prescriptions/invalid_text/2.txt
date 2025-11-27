@@ -1,0 +1,5 @@
+Patient Name: Sarah Lee
+Date: 25-Nov-2025
+Diagnosis: Type 2 Diabetes Mellitus
+Medicines:
+1. — (Medicine name missing, only dosage mentioned: 1 tablet twice daily)

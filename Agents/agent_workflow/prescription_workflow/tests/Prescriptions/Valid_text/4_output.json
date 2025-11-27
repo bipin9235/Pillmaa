@@ -1,0 +1,55 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Pantoprazole",
+            "form": "tablet",
+            "dose_amount": 40,
+            "dose_unit": "mg",
+            "duration_days": 14,
+            "schedule": {
+                "interval_hours": 24,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "07:30:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "before breakfast"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
+        },
+        {
+            "drug_name": "Sucralfate",
+            "form": "tablet",
+            "dose_amount": 1,
+            "dose_unit": "ml",
+            "duration_days": 10,
+            "schedule": {
+                "interval_hours": 8,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "17:00:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "before meals"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
+        },
+        {
+            "drug_name": "Ondansetron",
+            "form": "tablet",
+            "dose_amount": 4,
+            "dose_unit": "mg",
+            "duration_days": 1,
+            "schedule": {
+                "interval_hours": 24,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "17:00:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "as needed"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
+        }
+    ]
+}

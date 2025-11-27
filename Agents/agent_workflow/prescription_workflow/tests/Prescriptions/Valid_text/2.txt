@@ -1,0 +1,7 @@
+Patient Name: Sarah Lee
+Date: 25-Nov-2025
+Diagnosis: Type 2 Diabetes Mellitus
+Medicines:
+1. Metformin 500 mg – 1 tablet twice daily after meals
+2. Glimepiride 2 mg – 1 tablet once daily before breakfast
+3. Vitamin D3 60,000 IU – 1 capsule weekly for 8 weeks

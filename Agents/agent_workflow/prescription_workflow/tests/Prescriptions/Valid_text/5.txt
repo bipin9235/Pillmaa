@@ -1,0 +1,19 @@
+    Dr. Kavita Sharma, MBBS, MD (General Medicine)
+    Reg. No: MCI/DL/2025/67890
+    Lotus Care Clinic, New Delhi
+    Phone: +91-9812345678
+    Patient: Rohan Mehta
+    Age/Gender: 45 / Male
+    Date: 22/11/2025
+
+    Rx:
+    - Cefixime 200 mg 
+    - Paracetamol 500 mg – Oral, one tablet every 6 hours as needed for fever (max 4 tablets/day)
+    - Vitamin C 1000 mg – Oral, once daily for 10 days
+
+    Diagnosis: Upper respiratory tract infection
+    Advice: Drink plenty of fluids, rest, avoid cold exposure
+    Follow-up: Review after 1 week
+    Signature:
+    Dr. Kavita Sharma
+

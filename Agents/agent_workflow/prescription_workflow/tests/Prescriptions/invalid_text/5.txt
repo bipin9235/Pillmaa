@@ -1,0 +1,4 @@
+Patient Name: Ahmed Khan
+Date: 25-Nov-2025
+Diagnosis: Mild Asthma
+Medicines:

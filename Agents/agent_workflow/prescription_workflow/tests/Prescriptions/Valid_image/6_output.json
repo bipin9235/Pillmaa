@@ -1,0 +1,13 @@
+{
+    "medicines": [
+        {
+            "drug_name": "Amoxirin 100mg",
+            "drug_dosage_frequency": {
+                "frequency_type": "every 8 hours",
+                "time_of_day": "Not Mentioned",
+                "condition": "fever"
+            },
+            "drug_category": "Amoxirin"
+        }
+    ]
+}
