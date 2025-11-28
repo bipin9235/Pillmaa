@@ -1,34 +1,46 @@
 {
     "medicines": [
         {
-            "drug_name": "Metformin 500 mg",
-            "dose": "1 tablet",
-            "duration": "Not Mentioned",
-            "drug_dosage_frequency": {
-                "frequency_type": "twice daily",
-                "time_of_day": "Not Mentioned",
-                "condition": "after meals"
-            }
+            "medicine_full_name": "Metformin 500 mg",
+            "medicine_form": "tablet",
+            "intake_quantity": 1,
+            "intake_unit": "tablet",
+            "course_lenght_days": 84,
+            "intake_schedule": {
+                "dose_frequency_hours": 12,
+                "dose_frequency": "Weekly",
+                "administration_notes": "Not Mentioned"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         },
         {
-            "drug_name": "Glimepiride 2 mg",
-            "dose": "1 tablet",
-            "duration": "Not Mentioned",
-            "drug_dosage_frequency": {
-                "frequency_type": "once daily",
-                "time_of_day": "Not Mentioned",
-                "condition": "before breakfast"
-            }
+            "medicine_full_name": "Glimepiride 2 mg",
+            "medicine_form": "tablet",
+            "intake_quantity": 1,
+            "intake_unit": "tablet",
+            "course_lenght_days": 84,
+            "intake_schedule": {
+                "dose_frequency_hours": 24,
+                "dose_frequency": "Daily",
+                "administration_notes": "before breakfast before breakfast"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         },
         {
-            "drug_name": "Vitamin D3 60,000 IU",
-            "dose": "1 capsule",
-            "duration": "8 weeks",
-            "drug_dosage_frequency": {
-                "frequency_type": "weekly",
-                "time_of_day": "Not Mentioned",
-                "condition": "Not Mentioned"
-            }
+            "medicine_full_name": "Vitamin D3 60,000 IU",
+            "medicine_form": "capsule",
+            "intake_quantity": 1,
+            "intake_unit": "capsule",
+            "course_lenght_days": 56,
+            "intake_schedule": {
+                "dose_frequency_hours": 168,
+                "dose_frequency": "Weekly",
+                "administration_notes": "weekly"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         }
     ]
 }

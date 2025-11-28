@@ -7,6 +7,7 @@ from autogen_core import CancellationToken
 from .prescription_workflow_agents_prompt import Prompt
 from Agents.agent_workflow.common_agent.json_validator_agent import json_validator_agent
 from Agents.pydantic_models.prescription_extractor_model import PrescriptionModel
+from Agents.pydantic_models.schedular_model import Prescription
 import asyncio
 from autogen_agentchat.ui import Console
 from pydantic import ValidationError
@@ -51,7 +52,7 @@ def fetch_drug()->list:
     conn.close()
 
     print("Matched drug names in DB:", existing_names)
-    return existing_names
+    return data
 
 def validate_and_write_json(input:str|dict)->str:
     """Write the output to file. This function validate if input is valid json or not."""
@@ -76,7 +77,7 @@ def validate_and_write_json(input:str|dict)->str:
 
 input_validator_agent=base_agent_obj.create_assistant_agent('input_validator_agent',prompt_obj.input_validator_agent_prompt,description='Handles input prescription validating')
 
-prescription_extractor_agent=base_agent_obj.create_assistant_agent('prescription_extractor_agent',prompt_obj.prescription_extractor_agent_prompt,description='Handles generating json of prescribed medicines.',reflect_on_tool_use=True,output_content_type=PrescriptionModel)
+prescription_extractor_agent=base_agent_obj.create_assistant_agent('prescription_extractor_agent',prompt_obj.prescription_extractor_agent_prompt,description='Handles generating json of prescribed medicines.',reflect_on_tool_use=True,output_content_type=Prescription)
 
 final_output_validator_agent=base_agent_obj.create_assistant_agent('final_output_validator_agent',prompt_obj.final_output_validator_agent_prompt,reflect_on_tool_use=True,description='Handles validating final json prescrition with database.')
 
@@ -160,6 +161,7 @@ async def workflow(input_content,path=None):
     input_valid_flag=None
     result1=None
     json_written_flag=False
+    validator_response=''
     while True:
         if input_valid_flag==None:
             result1=await input_validator_agent.run(task=task,cancellation_token=CancellationToken())
@@ -170,6 +172,8 @@ async def workflow(input_content,path=None):
         
         if not 'INVALID' in result1 or input_valid_flag:
             input_valid_flag=True
+            if validator_response:
+                task=f'Feedback:\n{validator_response} \n Original Input:{task}'
             result2=await prescription_extractor_agent.run(task=task,cancellation_token=CancellationToken())
             response=result2.messages[-1].content
             prescription: PrescriptionModel = response
@@ -186,12 +190,12 @@ async def workflow(input_content,path=None):
             print('Input Invalid')
             return 'Input Invalid'
         if json_written_flag:
-            result3=await final_output_validator_agent.run(task=task,cancellation_token=CancellationToken())
-            response=result3.messages[-1].content
+            result3=await final_output_validator_agent.run(task=f'Prescription Extractor Output:{json_output}\n Original_Input:{task}',cancellation_token=CancellationToken())
+            validator_response=result3.messages[-1].content
             #final_output_validator_agent.on_reset()
             print('----------------Final Output Validator---------------------')
-            print(response)
-            if 'DONE' in response.upper():
+            print(validator_response)
+            if 'pass' in validator_response:
                 print('Final result generated')
                 return 'Done'
             else:

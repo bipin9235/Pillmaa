@@ -19,34 +19,13 @@ class BaseAgent:
             system_message=system_message,
             model_client=self.model_client,
             **kwargs)
-    # @classmethod
-    # def create_model_client(cls):
-    #     model_client = OpenAIChatCompletionClient(
-    #         base_url='https://openrouter.ai/api/v1',
-    #         model='nvidia/nemotron-nano-12b-v2-vl:free',
-    #         api_key=api_key,
-    #         model_info={"family": "nvidia", "name": "nemotron-nano-12b-v2-vl", "provider": "OpenRouter","vision":True,"function_calling":True,"json_output":True,"structured_output":True})
-    #     return model_client
     @classmethod
     def create_model_client(cls):
-        devstral_info = ModelInfo(
-            context_length=32768,# adjust based on devstral-small’s max context
-            supports_function_calling=False,
-            supports_streaming=True,
-            json_output=True,
-            vision=False,
-            function_calling=False
-        )
-
-        # Create the client
-        model_client = OllamaChatCompletionClient(
-            model="qwen3-4b",       # must match the name in `ollama list`
-            host="http://localhost:11434",# default Ollama server endpoint
-            model_info=devstral_info)
-
-        # model_client = OllamaChatCompletionClient(
-        #     model='qwen3-4b')
-        #    # model_info={"family": "qwen", "name": "qwen3-4b", "provider": "Ollama","vision":True,"function_calling":True,"json_output":True,"structured_output":True})
+        model_client = OpenAIChatCompletionClient(
+            base_url='https://openrouter.ai/api/v1',
+            model='nvidia/nemotron-nano-12b-v2-vl:free',
+            api_key=api_key,
+            model_info={"family": "nvidia", "name": "nemotron-nano-12b-v2-vl", "provider": "OpenRouter","vision":True,"function_calling":True,"json_output":True,"structured_output":True})
         return model_client
 
 

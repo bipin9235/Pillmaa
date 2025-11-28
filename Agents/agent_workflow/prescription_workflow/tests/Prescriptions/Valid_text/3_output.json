@@ -1,34 +1,55 @@
 {
     "medicines": [
         {
-            "drug_name": "Amlodipine 5 mg",
-            "dose": "1 tablet",
-            "duration": "Not Mentioned",
-            "drug_dosage_frequency": {
-                "frequency_type": "daily",
-                "time_of_day": "morning",
-                "condition": "Not Mentioned"
-            }
+            "drug_name": "Amlodipine",
+            "form": "tablet",
+            "dose_amount": 5,
+            "dose_unit": "mg",
+            "duration_days": 1,
+            "schedule": {
+                "interval_hours": 24,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "08:00:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "Not Mentioned"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         },
         {
-            "drug_name": "Losartan 50 mg",
-            "dose": "1 tablet",
-            "duration": "Not Mentioned",
-            "drug_dosage_frequency": {
-                "frequency_type": "daily",
-                "time_of_day": "night",
-                "condition": "Not Mentioned"
-            }
+            "drug_name": "Losartan",
+            "form": "tablet",
+            "dose_amount": 50,
+            "dose_unit": "mg",
+            "duration_days": 1,
+            "schedule": {
+                "interval_hours": 24,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "21:00:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "Not Mentioned"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         },
         {
-            "drug_name": "Aspirin 75 mg",
-            "dose": "1 tablet",
-            "duration": "Not Mentioned",
-            "drug_dosage_frequency": {
-                "frequency_type": "daily",
-                "time_of_day": "Not Mentioned",
-                "condition": "after lunch"
-            }
+            "drug_name": "Aspirin",
+            "form": "tablet",
+            "dose_amount": 75,
+            "dose_unit": "mg",
+            "duration_days": 1,
+            "schedule": {
+                "interval_hours": 24,
+                "interval_days": 1,
+                "start_date": "2025-11-25",
+                "start_time": "13:00:00-06:00",
+                "alarm_minutes_before": 10,
+                "instructions": "after lunch"
+            },
+            "prescribed_by": "Not Mentioned",
+            "notes": "Not Mentioned"
         }
     ]
 }
