@@ -11,7 +11,7 @@ from io import BytesIO
 #valid_images=f'/workspaces/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/Valid_image/{i}'
 
 for i in range(1,6):
-    path=f'/workspaces/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/Valid_text/{i}'
+    path=f'C:/Users/bipikuma/OneDrive - Capgemini/Documents/Learnings/GenAI/Pillmaa/Agents/agent_workflow/prescription_workflow/tests/Prescriptions/Valid_text/{i}'
     with open(file=path+'.txt',mode='r') as file:
         content=file.read()
         asyncio.run(workflow(input_content=content,path=path))
@@ -31,3 +31,8 @@ Feedback to be implemented:
 2. remove drug category field from output json(pydanticModel)
 3. dose/no. of capsule/ml or anything to be captured in output json(pydanticModel)
 """
+
+import os
+current_dir = os.getcwd()
+
+print("Current Working Directory:", current_dir)
